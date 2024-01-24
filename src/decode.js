@@ -13,3 +13,10 @@ const rl = readline.createInterface({
     input: fs.createReadStream(filePath),
     crlfDelay: Infinity // Para manejar correctamente los saltos de línea en Windows
 });
+
+// Evento que se activa cuando se lee una línea
+rl.on('line', (line) => {
+    const [index, value] = line.trim().split(' ');
+    linesByIndex[index] = value;
+    array.push(index);
+});
